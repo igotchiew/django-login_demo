@@ -1,0 +1,14 @@
+<h2>categories</h2>
+{% if user.is_authenticated %}
+<p>Welcome Home {{ user.username }}
+{% if category_list %}
+<ul>
+    {% for category in category_list %}
+    <li><a href="{{ category.category_name }}">{{ category.category_name }}</a></li>
+    {% endfor %}
+    <p><a href="{% url 'logout' %}">Log out</a></p>
+</ul>
+{% else %}
+<p>No food available today</p>
+{% endif %}
+{% endif %}

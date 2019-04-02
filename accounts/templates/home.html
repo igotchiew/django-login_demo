@@ -1,8 +1,10 @@
-<h2>Welcome Home</h2>
 {% if user.is_authenticated %}
-<p>Hello {{ user.username }}
+<h2>Homepage</h2>
+<p>Welcome Home {{ user.username }}
+<p><a href="{% url 'category' %}">Food</a></p>
 <p><a href="{% url 'logout' %}">Log out</a></p>
 {% else %}
+<h2>Landing Page</h2>
 <p><a href="{% url 'signup' %}">Sign up</a></p>
 <p><a href="{% url 'login' %}">Log in</a></p>
 {% endif %}
