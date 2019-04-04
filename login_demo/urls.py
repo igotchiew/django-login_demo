@@ -22,6 +22,6 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     # automatically comes with premapped urls and views
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', TemplateView.as_view(template_name='home.html')),
+    # path('', TemplateView.as_view(template_name='home.html')),
     path('admin/', admin.site.urls),
 ]

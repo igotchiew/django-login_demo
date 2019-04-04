@@ -2,8 +2,6 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.views import generic
-from django.http import Http404
-from django.template import loader
 from .forms import CustomUserCreationForm
 from .models import Category, Product
 
@@ -18,7 +16,6 @@ class SignUp(generic.CreateView):
     template_name = 'signup.html'
 
 
-# index view in tutorial
 def category(request):
     category_list = Category.objects.all()
     context = {
@@ -27,10 +24,9 @@ def category(request):
     return render(request, 'category.html', context)
 
 
-# detail view in tutorial
 def product(request, category_name):
-    try:
-        item = Product.objects.get(category_name=category_name)
-    except Product.DoesNotExist:
-        raise Http404("Product does not exist")
-    return render(request, 'product.html', {'item': item})
+    product_list = Product.objects.filter(category_name=category_name)
+    context = {
+        'product_list': product_list,
+    }
+    return render(request, 'product.html', context)
